@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview in Progress - InterviewAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fd;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: #ffffff;
+            padding: 14px 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f1f3f9;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: #5b46e5;
+            color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .logo-text h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e1b4b;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 10px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a.active {
+            color: #5b46e5;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: #5b46e5;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .main-container {
+            max-width: 1280px;
+            width: 100%;
+            margin: 20px auto 30px;
+            padding: 0 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .top-banner-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 20px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .banner-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .banner-icon {
+            width: 44px;
+            height: 44px;
+            background: #ede9fe;
+            color: #5b46e5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .banner-left h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #5b46e5;
+        }
+
+        .banner-left p {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .timer-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 8px 18px;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timer-box i {
+            color: #5b46e5;
+            font-size: 18px;
+        }
+
+        .timer-box .time {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e1b4b;
+        }
+
+        .timer-box .label {
+            font-size: 10px;
+            color: #64748b;
+            display: block;
+        }
+
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 2.8fr 1.2fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .main-test-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            overflow: hidden;
+            min-height: 520px;
+        }
+
+        .questions-nav {
+            border-right: 1px solid #f1f3f9;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+            padding-left: 6px;
+        }
+
+        .question-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 380px;
+            overflow-y: auto;
+        }
+
+        .q-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .q-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .q-item.active {
+            background: #f3f0ff;
+            color: #5b46e5;
+            font-weight: 600;
+        }
+
+        .q-item.active .q-num {
+            background: #5b46e5;
+            color: #ffffff;
+        }
+
+        .q-item.answered .q-num {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .legend {
+            border-top: 1px solid #f1f3f9;
+            padding-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .dot.current { background: #5b46e5; }
+        .dot.unanswered { background: #94a3b8; }
+        .dot.answered { background: #16a34a; }
+
+        .question-area {
+            padding: 30px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .badge-qnum {
+            background: #f3f0ff;
+            color: #5b46e5;
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .active-question-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 18px;
+        }
+
+        .tip-box {
+            background: #faf8ff;
+            border: 1px solid #ede9fe;
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .tip-box i {
+            color: #5b46e5;
+            font-size: 15px;
+            margin-top: 2px;
+        }
+
+        .tip-box p {
+            font-size: 12px;
+            color: #4b5563;
+            line-height: 1.4;
+        }
+
+        .tip-box span {
+            font-weight: 600;
+            color: #1e1b4b;
+        }
+
+        .textarea-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .textarea-wrapper {
+            position: relative;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .answer-input {
+            width: 100%;
+            height: 170px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            font-size: 13px;
+            outline: none;
+            resize: none;
+        }
+
+        .answer-input:focus {
+            border-color: #5b46e5;
+        }
+
+        .char-counter {
+            position: absolute;
+            bottom: 12px;
+            right: 14px;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+
+        .action-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-prev {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-next {
+            background: #5b46e5;
+            border: none;
+            color: #ffffff;
+            padding: 10px 26px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .side-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 22px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .side-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+        }
+
+        .progress-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .circle-progress {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
+                        conic-gradient(#5b46e5 10%, #e2e8f0 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .progress-sub {
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 10px;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            width: 10%;
+            height: 100%;
+            background: #5b46e5;
+            border-radius: 10px;
+        }
+
+        .details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detail-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+
+        .bg-purple { background: #ede9fe; color: #5b46e5; }
+        .bg-amber { background: #fef3c7; color: #d97706; }
+        .bg-blue { background: #e0f2fe; color: #0284c7; }
+        .bg-green { background: #dcfce7; color: #16a34a; }
+
+        .detail-text span {
+            font-size: 10px;
+            color: #64748b;
+            display: block;
+        }
+
+        .detail-text h5 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .help-card p {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .btn-skip {
+            width: 100%;
+            background: #ffffff;
+            border: 1.5px solid #5b46e5;
+            color: #5b46e5;
+            padding: 9px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .bottom-banner {
+            background: #f3f0ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 14px;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bottom-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bottom-icon {
+            width: 32px;
+            height: 32px;
+            background: #5b46e5;
+            color: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .bottom-left h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1e1b4b;
+        }
+
+        .bottom-left p {
+            font-size: 11px;
+            color: #4b5563;
+            margin-top: 2px;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="{{ url_for('home') }}" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+            <div class="logo-text">
+                <h2>InterviewAI</h2>
+                <span>AI Interviewer & Skill Analyzer</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="{{ url_for('interview_setup') }}" class="active"><i class="fa-solid fa-microphone-lines"></i> AI Interviews</a></li>
+            <li><a href="{{ url_for('skills') }}"><i class="fa-solid fa-chart-pie"></i> Skill Analysis</a></li>
+            <li><a href="{{ url_for('result') }}"><i class="fa-solid fa-clipboard-check"></i> Personalized Feedback</a></li>
+            <li><a href="{{ url_for('practice') }}"><i class="fa-solid fa-chart-line"></i> Track Progress</a></li>
+            <li><a href="{{ url_for('how_it_works') }}"><i class="fa-solid fa-circle-question"></i> How It Works</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+            <span>Hello, Priya</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <div class="top-banner-card">
+            <div class="banner-left">
+                <div class="banner-icon"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                    <h3>AI Interview in Progress</h3>
+                    <p>Answer each question to the best of your ability. Be honest and thoughtful.</p>
+                </div>
+            </div>
+
+            <div class="timer-box">
+                <i class="fa-regular fa-clock"></i>
+                <div>
+                    <span class="time" id="time-display">30:00</span>
+                    <span class="label">Time Remaining</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="workspace-grid">
+            
+            <div class="main-test-card">
+                
+                <div class="questions-nav">
+                    <div>
+                        <div class="nav-title">Questions</div>
+                        <div class="question-list">
+                            {% for q in questions %}
+                            <div class="q-item {% if loop.first %}active{% endif %}" onclick="showQuestion({{ loop.index0 }})">
+                                <span class="q-num">{{ loop.index }}</span>
+                                <span>Question {{ loop.index }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="legend">
+                        <div class="legend-item"><span class="dot current"></span> Current</div>
+                        <div class="legend-item"><span class="dot unanswered"></span> Unanswered</div>
+                        <div class="legend-item"><span class="dot answered"></span> Answered</div>
+                    </div>
+                </div>
+
+                <div class="question-area">
+                    <div>
+                        <span class="badge-qnum" id="badge-qnum">Question 1 of {{ total_questions }}</span>
+                        <h2 class="active-question-title" id="question-title">{{ questions[0]['title'] if questions else 'Tell me about yourself.' }}</h2>
+
+                        <div class="tip-box" id="tip-box">
+                            <i class="fa-regular fa-lightbulb"></i>
+                            <p id="tip-text"><span>Tip:</span> {{ questions[0]['tip'] if questions else 'Focus on your education and skills.' }}</p>
+                        </div>
+
+                        <label class="textarea-label">Type your answer here...</label>
+                        <div class="textarea-wrapper">
+                            <textarea class="answer-input" id="answer-field" placeholder="Write your answer..." oninput="updateCounter()"></textarea>
+                            <span class="char-counter" id="char-counter">0 / 2000</span>
+                        </div>
+                    </div>
+
+                    <div class="action-row">
+                        <button type="button" class="btn-prev" onclick="prevQuestion()"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                        <button type="button" class="btn-next" id="btn-next" onclick="nextQuestion()">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="side-panel">
+                
+                <div class="side-card">
+                    <h4 class="side-title">Interview Progress</h4>
+                    <div class="progress-content">
+                        <div class="circle-progress" id="circle-progress">10%</div>
+                        <div class="progress-sub" id="progress-sub">1 of {{ total_questions }} Questions</div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" id="bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="side-card">
+                    <h4 class="side-title">Interview Details</h4>
+                    <div class="details-list">
+                        <div class="detail-item">
+                            <div class="detail-icon bg-purple"><i class="fa-solid fa-user"></i></div>
+                            <div class="detail-text">
+                                <span>Type</span>
+                                <h5>{{ interview_type }}</h5>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon bg-amber"><i class="fa-solid fa-chart-simple"></i></div>
+                            <div class="detail-text">
+                                <span>Difficulty</span>
+                                <h5>{{ difficulty }}</h5>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon bg-blue"><i class="fa-solid fa-clipboard-list"></i></div>
+                            <div class="detail-text">
+                                <span>Total Questions</span>
+                                <h5>{{ total_questions }}</h5>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon bg-green"><i class="fa-solid fa-clock"></i></div>
+                            <div class="detail-text">
+                                <span>Time per Question</span>
+                                <h5>3 Minutes</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="side-card help-card">
+                    <h4 class="side-title">Need Help?</h4>
+                    <p>If you face any issue, you can skip the question and come back later.</p>
+                    <button type="button" class="btn-skip" onclick="skipQuestion()"><i class="fa-solid fa-forward-step"></i> Skip Question</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bottom-banner" id="bottom-tip">
+            <div class="bottom-left">
+                <div class="bottom-icon"><i class="fa-solid fa-star"></i></div>
+                <div>
+                    <h4>Important Tips</h4>
+                    <p>Be authentic • Structure your answers • Use examples • Stay positive and confident</p>
+                </div>
+            </div>
+            <button class="close-btn" onclick="document.getElementById('bottom-tip').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+    </main>
+
+    <script>
+    const questionsData = {{ questions | tojson | safe }};
+    const totalCount = questionsData.length;
+
+    let activeIdx = 0;
+    let savedAnswers = {};
+
+    // =========================
+    // SHOW QUESTION
+    // =========================
+    function showQuestion(idx) {
+
+        if (idx < 0 || idx >= totalCount) {
+            return;
+        }
+
+        const ansBox = document.getElementById('answer-field');
+
+        // Current answer save
+        if (ansBox) {
+            savedAnswers[activeIdx] = ansBox.value;
+        }
+
+        // New question par jaane se pehle answer check
+        if (idx !== activeIdx) {
+
+            const currentAnswer =
+                savedAnswers[activeIdx]
+                    ? savedAnswers[activeIdx].trim()
+                    : "";
+
+            if (currentAnswer === "") {
+                alert("Please answer the current question before moving to the next question.");
+                ansBox.focus();
+                return;
+            }
+        }
+
+        activeIdx = idx;
+
+        const cur = questionsData[activeIdx];
+
+        // Question
+        document.getElementById('question-title').innerText =
+            cur.question;
+
+        // Tip
+        document.getElementById('tip-text').innerHTML =
+            '<span>Tip:</span> Structure your answer clearly, keep it concise, and provide practical examples.';
+
+        // Question number
+        document.getElementById('badge-qnum').innerText =
+            'Question ' + (activeIdx + 1) + ' of ' + totalCount;
+
+        // Previous answer restore
+        ansBox.value = savedAnswers[activeIdx] || "";
+
+        document.getElementById('char-counter').innerText =
+            ansBox.value.length + ' / 2000';
+
+        // Sidebar
+        const items = document.querySelectorAll('.q-item');
+
+        items.forEach((item, i) => {
+
+            item.classList.remove('active');
+
+            if (i === activeIdx) {
+                item.classList.add('active');
+            }
+
+            if (
+                savedAnswers[i] &&
+                savedAnswers[i].trim() !== ""
+            ) {
+                item.classList.add('answered');
+            } else {
+                item.classList.remove('answered');
+            }
+        });
+
+        // Progress
+        const pct = Math.round(
+            ((activeIdx + 1) / totalCount) * 100
+        );
+
+        document.getElementById('circle-progress').innerText =
+            pct + '%';
+
+        document.getElementById('circle-progress').style.background =
+            'radial-gradient(closest-side, white 79%, transparent 80% 100%), ' +
+            'conic-gradient(#5b46e5 ' + pct + '%, #e2e8f0 0)';
+
+        document.getElementById('progress-sub').innerText =
+            (activeIdx + 1) +
+            ' of ' +
+            totalCount +
+            ' Questions';
+
+        document.getElementById('bar-fill').style.width =
+            pct + '%';
+
+        // Button text
+        const nextButton =
+            document.getElementById('btn-next');
+
+        if (activeIdx === totalCount - 1) {
+
+            nextButton.innerHTML =
+                'Submit & Finish <i class="fa-solid fa-check"></i>';
+
+        } else {
+
+            nextButton.innerHTML =
+                'Next Question <i class="fa-solid fa-arrow-right"></i>';
+        }
+
+        updateNextButton();
+    }
+
+
+    // =========================
+    // NEXT BUTTON ENABLE/DISABLE
+    // =========================
+    function updateNextButton() {
+
+        const answer =
+            document.getElementById('answer-field').value.trim();
+
+        const button =
+            document.getElementById('btn-next');
+
+        if (answer === "") {
+
+            button.disabled = true;
+            button.style.opacity = "0.5";
+            button.style.cursor = "not-allowed";
+
+        } else {
+
+            button.disabled = false;
+            button.style.opacity = "1";
+            button.style.cursor = "pointer";
+        }
+    }
+
+
+    // =========================
+    // NEXT QUESTION
+    // =========================
+    function nextQuestion() {
+
+        const ansBox =
+            document.getElementById('answer-field');
+
+        const answer =
+            ansBox.value.trim();
+
+        // Answer compulsory
+        if (answer === "") {
+
+            alert(
+                "Please answer this question before continuing."
+            );
+
+            ansBox.focus();
+            return;
+        }
+
+        // Save answer
+        savedAnswers[activeIdx] = answer;
+
+        // Next question
+        if (activeIdx < totalCount - 1) {
+
+            showQuestion(activeIdx + 1);
+
+         } else {
+
+    fetch("{{ url_for('submit_interview') }}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            questions: questionsData,
+            answers: savedAnswers,
+            interview_type: "{{ interview_type }}",
+            difficulty: "{{ difficulty }}"
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.success) {
+            window.location.href =
+                "{{ url_for('result') }}";
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
+
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Unable to submit interview.");
+    });
+}
+    }
+
+
+    // =========================
+    // PREVIOUS QUESTION
+    // =========================
+    function prevQuestion() {
+
+        const ansBox =
+            document.getElementById('answer-field');
+
+        // Current answer save
+        savedAnswers[activeIdx] =
+            ansBox.value;
+
+        if (activeIdx > 0) {
+
+            activeIdx--;
+
+            loadPreviousQuestion();
+
+        } else {
+
+            window.location.href =
+                "{{ url_for('interview_setup') }}";
+        }
+    }
+
+
+    // =========================
+    // LOAD PREVIOUS QUESTION
+    // =========================
+    function loadPreviousQuestion() {
+
+        const cur =
+            questionsData[activeIdx];
+
+        const ansBox =
+            document.getElementById('answer-field');
+
+        document.getElementById('question-title').innerText =
+            cur.question;
+
+        document.getElementById('badge-qnum').innerText =
+            'Question ' +
+            (activeIdx + 1) +
+            ' of ' +
+            totalCount;
+
+        document.getElementById('tip-text').innerHTML =
+            '<span>Tip:</span> Structure your answer clearly, keep it concise, and provide practical examples.';
+
+        // Saved answer
+        ansBox.value =
+            savedAnswers[activeIdx] || "";
+
+        document.getElementById('char-counter').innerText =
+            ansBox.value.length + ' / 2000';
+
+        // Sidebar update
+        const items =
+            document.querySelectorAll('.q-item');
+
+        items.forEach((item, i) => {
+
+            item.classList.remove('active');
+
+            if (i === activeIdx) {
+                item.classList.add('active');
+            }
+
+            if (
+                savedAnswers[i] &&
+                savedAnswers[i].trim() !== ""
+            ) {
+                item.classList.add('answered');
+            } else {
+                item.classList.remove('answered');
+            }
+        });
+
+        // Progress
+        const pct =
+            Math.round(
+                ((activeIdx + 1) / totalCount) * 100
+            );
+
+        document.getElementById('circle-progress').innerText =
+            pct + '%';
+
+        document.getElementById('circle-progress').style.background =
+            'radial-gradient(closest-side, white 79%, transparent 80% 100%), ' +
+            'conic-gradient(#5b46e5 ' + pct + '%, #e2e8f0 0)';
+
+        document.getElementById('progress-sub').innerText =
+            (activeIdx + 1) +
+            ' of ' +
+            totalCount +
+            ' Questions';
+
+        document.getElementById('bar-fill').style.width =
+            pct + '%';
+
+        const nextButton =
+            document.getElementById('btn-next');
+
+        if (activeIdx === totalCount - 1) {
+
+            nextButton.innerHTML =
+                'Submit & Finish <i class="fa-solid fa-check"></i>';
+
+        } else {
+
+            nextButton.innerHTML =
+                'Next Question <i class="fa-solid fa-arrow-right"></i>';
+        }
+
+        updateNextButton();
+    }
+
+
+    // =========================
+    // SKIP QUESTION
+    // =========================
+    function skipQuestion() {
+
+        alert(
+            "Please answer the current question before moving forward."
+        );
+
+        document.getElementById('answer-field').focus();
+    }
+
+
+    // =========================
+    // CHARACTER COUNTER
+    // =========================
+    function updateCounter() {
+
+        const answerBox =
+            document.getElementById('answer-field');
+
+        const value =
+            answerBox.value.length;
+
+        document.getElementById('char-counter').innerText =
+            value + ' / 2000';
+
+        updateNextButton();
+    }
+
+
+    // =========================
+    // TIMER
+    // =========================
+    let timeLeft = 30 * 60;
+
+    function updateTimer() {
+
+        const minutes =
+            Math.floor(timeLeft / 60);
+
+        const seconds =
+            timeLeft % 60;
+
+        document.getElementById('time-display').innerText =
+            String(minutes).padStart(2, '0') +
+            ':' +
+            String(seconds).padStart(2, '0');
+
+        if (timeLeft > 0) {
+
+            timeLeft--;
+
+        } else {
+
+            alert("Time is over!");
+
+            window.location.href =
+                "{{ url_for('result') }}";
+        }
+    }
+
+    setInterval(updateTimer, 1000);
+
+
+    // =========================
+    // FIRST QUESTION
+    // =========================
+    showQuestion(0);
+
+</script>
+</body>
+</html>
