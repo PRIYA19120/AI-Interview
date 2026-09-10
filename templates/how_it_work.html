@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>How It Works - InterviewAI</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #07152f;
+
+            color: white;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: #061127;
+
+            border-bottom: 1px solid
+                rgba(255,255,255,0.1);
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        .logo span {
+
+            color: #4facfe;
+        }
+
+
+        nav ul {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 30px;
+        }
+
+
+        nav ul li a {
+
+            text-decoration: none;
+
+            color: #dbe7ff;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+
+        nav ul li a:hover {
+
+            color: #4facfe;
+        }
+
+
+        nav ul li a.active {
+
+            color: #4facfe;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 55px 0;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+
+        .hero h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hero h1 span {
+
+            color: #4facfe;
+        }
+
+
+        .hero p {
+
+            max-width: 750px;
+
+            margin: auto;
+
+            color: #aebbd4;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           STEPS
+        ========================= */
+
+        .steps {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+            margin-bottom: 50px;
+        }
+
+
+        .step-card {
+
+            background: #0d2145;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            transition: 0.3s;
+
+            position: relative;
+        }
+
+
+        .step-card:hover {
+
+            transform: translateY(-7px);
+
+            border-color: #4facfe;
+
+            box-shadow:
+                0 10px 30px
+                rgba(79,172,254,0.12);
+        }
+
+
+        .step-number {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #4facfe;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+
+        .step-icon {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .step-card h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .step-card p {
+
+            color: #aebbd4;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FLOW
+        ========================= */
+
+        .flow-section {
+
+            background: #0d2145;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            margin-bottom: 35px;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        .flow-section h2 {
+
+            text-align: center;
+
+            font-size: 27px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .flow {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .flow-box {
+
+            background: #081a38;
+
+            border-radius: 12px;
+
+            padding: 18px 20px;
+
+            text-align: center;
+
+            min-width: 135px;
+        }
+
+
+        .flow-box .icon {
+
+            font-size: 27px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .flow-box h3 {
+
+            font-size: 14px;
+        }
+
+
+        .arrow {
+
+            color: #4facfe;
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+
+            margin-top: 35px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .feature {
+
+            background: #081a38;
+
+            padding: 23px;
+
+            border-radius: 13px;
+
+            border: 1px solid
+                rgba(255,255,255,0.06);
+        }
+
+
+        .feature h3 {
+
+            margin-bottom: 8px;
+
+            font-size: 17px;
+        }
+
+
+        .feature p {
+
+            color: #aebbd4;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0d2145,
+                    #102b57
+                );
+
+            padding: 40px;
+
+            border-radius: 18px;
+
+            margin-top: 35px;
+        }
+
+
+        .cta h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .cta p {
+
+            color: #aebbd4;
+
+            margin-bottom: 22px;
+        }
+
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 14px 30px;
+
+            background: #4facfe;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .btn:hover {
+
+            transform: translateY(-3px);
+
+            background: #328edb;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .steps {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .features {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                padding: 0 4%;
+            }
+
+
+            nav ul {
+
+                gap: 12px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 32px;
+            }
+
+
+            .flow {
+
+                flex-direction: column;
+            }
+
+
+            .arrow {
+
+                transform: rotate(90deg);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+
+        Interview<span>AI</span>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            <a href="{{ url_for('home') }}">
+                Home
+            </a>
+        </li>
+
+
+        <li>
+            <a href="{{ url_for('interview_setup') }}">
+                Interview
+            </a>
+        </li>
+
+
+        <li>
+            <a href="{{ url_for('skills') }}">
+                Skills
+            </a>
+        </li>
+
+
+        <li>
+            <a href="{{ url_for('practice') }}">
+                Track Progress
+            </a>
+        </li>
+
+
+        <li>
+            <a href="{{ url_for('how_it_works') }}"
+               class="active">
+                How It Works
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+
+            How
+            <span>InterviewAI</span>
+            Works 🤖
+
+        </h1>
+
+
+        <p>
+
+            InterviewAI helps you practice interviews,
+            analyze your answers using AI, identify
+            your strengths and weaknesses, and track
+            your interview performance over time.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         STEPS
+    ========================= -->
+
+    <div class="steps">
+
+
+        <!-- STEP 1 -->
+
+        <div class="step-card">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <div class="step-icon">
+                ⚙️
+            </div>
+
+            <h2>
+                Choose Interview
+            </h2>
+
+            <p>
+
+                Select your interview type,
+                such as HR, Technical or General,
+                and choose the difficulty level.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 2 -->
+
+        <div class="step-card">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <div class="step-icon">
+                💬
+            </div>
+
+            <h2>
+                Answer Questions
+            </h2>
+
+            <p>
+
+                Answer the interview questions
+                by typing your responses directly
+                into the interview interface.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 3 -->
+
+        <div class="step-card">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <div class="step-icon">
+                🤖
+            </div>
+
+            <h2>
+                AI Evaluation
+            </h2>
+
+            <p>
+
+                AI analyzes your answers and
+                compares them with the expected
+                answer using semantic similarity.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 4 -->
+
+        <div class="step-card">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <div class="step-icon">
+                📊
+            </div>
+
+            <h2>
+                Get Your Result
+            </h2>
+
+            <p>
+
+                Receive your overall score,
+                response quality and detailed
+                interview performance.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 5 -->
+
+        <div class="step-card">
+
+            <div class="step-number">
+                5
+            </div>
+
+            <div class="step-icon">
+                🧠
+            </div>
+
+            <h2>
+                Analyze Your Skills
+            </h2>
+
+            <p>
+
+                Identify your strengths and
+                areas that need improvement
+                through skill analysis.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 6 -->
+
+        <div class="step-card">
+
+            <div class="step-number">
+                6
+            </div>
+
+            <div class="step-icon">
+                📈
+            </div>
+
+            <h2>
+                Track Progress
+            </h2>
+
+            <p>
+
+                Track your scores across
+                multiple interviews and see
+                your improvement through graphs.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         FLOW
+    ========================= -->
+
+    <section class="flow-section">
+
+        <h2>
+            InterviewAI Process
+        </h2>
+
+
+        <div class="flow">
+
+
+            <div class="flow-box">
+
+                <div class="icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Interview Setup
+                </h3>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <div class="icon">
+                    💬
+                </div>
+
+                <h3>
+                    Answer Questions
+                </h3>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <h3>
+                    AI Analysis
+                </h3>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <h3>
+                    Result
+                </h3>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <div class="icon">
+                    📈
+                </div>
+
+                <h3>
+                    Track Progress
+                </h3>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section class="flow-section">
+
+        <h2>
+            What InterviewAI Provides
+        </h2>
+
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <h3>
+                    🤖 AI-Based Evaluation
+                </h3>
+
+                <p>
+
+                    Answers are evaluated using
+                    AI-based semantic similarity
+                    to estimate how closely the
+                    response matches the expected
+                    answer.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature">
+
+                <h3>
+                    🎯 Personalized Analysis
+                </h3>
+
+                <p>
+
+                    Your interview performance is
+                    analyzed to identify strong
+                    responses and areas that need
+                    improvement.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature">
+
+                <h3>
+                    📊 Performance Tracking
+                </h3>
+
+                <p>
+
+                    Your interview scores can be
+                    tracked across multiple attempts
+                    using the Score Progress graph.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature">
+
+                <h3>
+                    💡 Interview Practice
+                </h3>
+
+                <p>
+
+                    Practice different interview
+                    categories and difficulty levels
+                    to improve your preparation.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta">
+
+        <h2>
+            Ready to Practice?
+        </h2>
+
+
+        <p>
+
+            Start an AI-powered interview
+            and discover where you can improve.
+
+        </p>
+
+
+        <a
+            href="{{ url_for('interview_setup') }}"
+            class="btn"
+        >
+
+            Start Interview 🚀
+
+        </a>
+
+    </section>
+
+
+</div>
+
+
+</body>
+
+</html>
